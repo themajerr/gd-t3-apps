@@ -7,12 +7,12 @@ spec:
     name: mariadb-wordpress
     key: root-password
 
-  # username: mariadb-admin
-  # passwordSecretKeyRef:
-  #   name: mariadb-password
-  #   key: admin-password
-  #   generate: false
-  # database: mariadb
+  username: mariadb-admin
+  passwordSecretKeyRef:
+    name: mariadb-wordpress
+    key: admin-password
+    generate: false
+  database: mariadb
 
   port: 3306
 
