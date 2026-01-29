@@ -16,3 +16,23 @@ spec:
   cleanupPolicy: Delete
   requeueInterval: 10h
   retryInterval: 30s
+
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Grant
+metadata:
+  name: grant-wordpress
+spec:
+  mariaDbRef:
+    name: mariadb-wordpress
+  privileges:
+    - "ALL PRIVILEGES"
+  database: "*"
+  table: "*"
+  username: root
+  grantOption: true
+  host: "%"
+
+  cleanupPolicy: Delete
+  requeueInterval: 10h
+  retryInterval: 30s
