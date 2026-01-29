@@ -1,0 +1,15 @@
+piVersion: k8s.mariadb.com/v1alpha1
+kind: Database
+metadata:
+  name: db-wordpress
+spec:
+  # If you want the database to be created with a different name than the resource name
+  # name: my-logical-database
+  mariaDbRef:
+    name: mariadb-wordpress
+  characterSet: utf8
+  collate: utf8_general_ci
+
+  cleanupPolicy: Delete
+  requeueInterval: 10h
+  retryInterval: 30s
