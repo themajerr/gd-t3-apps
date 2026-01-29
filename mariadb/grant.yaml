@@ -21,7 +21,7 @@ spec:
 apiVersion: k8s.mariadb.com/v1alpha1
 kind: Grant
 metadata:
-  name: grant-wordpress
+  name: grant-root
 spec:
   mariaDbRef:
     name: mariadb-wordpress
