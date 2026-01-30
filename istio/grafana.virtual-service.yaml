@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: wordpress-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+    - "grafana.t3.superproject.local"
+  gateways:
+    - istio-gateway
+  http:
+    - name: grafana
+      match: 
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: kube-prometheus-stack-grafana.monitoring.svc.cluster.local
+            port:
+              number: 80
+      timeout: 30s
