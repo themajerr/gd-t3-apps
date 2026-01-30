@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: wordpress-virtual-service
+  name: grafana-virtual-service
   namespace: istio-system
 spec:
   hosts:
