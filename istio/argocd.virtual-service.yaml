@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argocd-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+    - "argocd.t3.superproject.local"
+  gateways:
+    - istio-gateway
+  http:
+    - name: argocd
+      match: 
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: argocd-server.argocd.svc.cluster.local
+            port:
+              number: 80
+      timeout: 30s
