@@ -14,6 +14,7 @@ spec:
     hosts:
     - "argocd.t3.superproject.local"
     - "wordpress.t3.superproject.local"
+    - "grafana.t3.superproject.local"
     tls:
       httpsRedirect: false # sends 301 redirect for http requests
 
