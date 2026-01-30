@@ -2,6 +2,7 @@ apiVersion: k8s.mariadb.com/v1alpha1
 kind: Grant
 metadata:
   name: grant-wordpress
+  namespace: mariadb
 spec:
   mariaDbRef:
     name: mariadb-wordpress
@@ -22,6 +23,7 @@ apiVersion: k8s.mariadb.com/v1alpha1
 kind: Grant
 metadata:
   name: grant-root
+  namespace: mariadb
 spec:
   mariaDbRef:
     name: mariadb-wordpress
@@ -31,7 +33,7 @@ spec:
   table: "*"
   username: root
   grantOption: true
-  host: "localhost"
+  host: "%"
 
   cleanupPolicy: Delete
   requeueInterval: 10h

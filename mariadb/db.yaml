@@ -2,9 +2,9 @@ apiVersion: k8s.mariadb.com/v1alpha1
 kind: Database
 metadata:
   name: db-wordpress
+  namespace: mariadb
 spec:
-  # If you want the database to be created with a different name than the resource name
-  # name: my-logical-database
+
   mariaDbRef:
     name: mariadb-wordpress
   characterSet: utf8
