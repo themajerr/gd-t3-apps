@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: istio-gateway
+  namespace: istio-system
+spec:
+  selector:
+    app: istio-gateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "argocd.t3.superproject.local"
+    - "wordpress.t3.superproject.local"
+    tls:
+      httpsRedirect: false # sends 301 redirect for http requests
+
+

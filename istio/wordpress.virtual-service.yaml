@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: virtual-service-wordpress
+spec:
+  hosts:
+  - "wordpress.t3.superproject.local"
+  http:
+  - name: "wordpress"
+    route:
+    - destination:
+        host: wordpress.wordpress.svc.cluster.local
+        port: 
+          number: 8080
