@@ -1,14 +1,21 @@
-apiVersion: networking.istio.io/v1
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: virtual-service-wordpress
+  name: wordpress-virtual-service
+  namespace: istio-system
 spec:
   hosts:
-  - "wordpress.t3.superproject.local"
+    - "wordpress.t3.superproject.local"
+  gateways:
+    - istio-gateway
   http:
-  - name: "wordpress"
-    route:
-    - destination:
-        host: wordpress.wordpress.svc.cluster.local
-        port: 
-          number: 8080
+    - name: wordpress
+      match: 
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: wordpress.wordpress.svc.cluster.local
+            port:
+              number: 80
+      timeout: 30s
