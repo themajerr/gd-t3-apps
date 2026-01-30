@@ -18,7 +18,7 @@ spec:
           secretName: wp-config
       containers:
       - name: wordpress
-        image: wordpress-wp:0.1
+        image: t3acrmain.azurecr.io/wordpress/wordpress-wp:0.1
         # resources:
         #   requests:
         #     cpu: 100m
