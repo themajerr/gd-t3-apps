@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  namespace: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      volumes:
+      - name: wp-config
+        secret:
+          secretName: wp-config
+      containers:
+      - name: wordpress
+        image: wordpress-wp:0.1
+        # resources:
+        #   requests:
+        #     cpu: 100m
+        #     memory: 512Mi
+        #   limits:
+        #     memory: "1024Mi"
+        #     cpu: "1000m"
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: wp-config
+          mountPath: /var/secret/wp-config.php
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp /var/secret/wp-config.php/wp-config.php /opt/wordpress/wp-config.php"]
+
