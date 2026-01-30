@@ -23,7 +23,7 @@ define( 'DB_NAME', 'wordpress' );
 
 define( 'DB_USER', 'wordpress' );
 
-define( 'DB_PASSWORD', 'MariaDB11!' );
+define( 'DB_PASSWORD', '' );
 
 define( 'DB_HOST', 'mariadb-galera' );
 
